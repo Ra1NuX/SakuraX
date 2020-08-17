@@ -1,0 +1,67 @@
+body{ 
+    background-image: url( wpp2.png ) ;
+    background-repeat: no-repeat ;
+    background-size: 100%;
+}
+
+.Lock{
+    position: absolute;
+    padding: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    top: 48%;
+    left: 50%;
+    border-radius: 3px;
+    border: 1px;
+    transform: translate(-50%, -50%);
+    /*-----------------------------------*/
+}
+
+.TittleSakura{
+    -webkit-text-stroke: 2px white;
+    color: black; 
+    position: absolute;
+    top: 26%;
+    left: 50%;
+    transform: translate(-49%, -50%);
+    font-size: 4rem;
+    font-family: 'Press Start 2P', cursive;
+
+}
+
+input[type=text],
+input[type=password]{
+    outline: none;
+    padding: 20px;
+    display: block;
+    width: 300px;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    margin: 20px auto;    
+}
+
+input[type=submit]{
+    display: block;
+    padding: 10px;
+    color: #fff;
+    background: #0098cb;
+    background-image: url( candadoc.png );
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    margin-top: 2rem;
+    border: 0;
+    border-radius: 40px;
+    cursor: pointer;
+    user-select: none;
+    
+}
+
+input[type="submit"]:hover {
+    background-color: #00b8eb;
+    user-select: none;
+    background-image: url( candado.png );
+}
