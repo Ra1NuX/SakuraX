@@ -1,0 +1,16 @@
+
+li.folder{
+    list-style: disclosure-closed;
+    margin: 0;
+}
+li.file{
+    list-style: initial;
+}
+.li-ul-tree{
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+.ul-a{
+    font-size: smaller;
+    line-height: 15px;
+}
