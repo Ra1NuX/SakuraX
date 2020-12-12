@@ -23,7 +23,5 @@ app.use(fileUpload())
 //routes.
 app.use(require('./Routes/Index.js'));
 
-require("./Tree.js");
-
 //port listen.
 app.listen(8080);

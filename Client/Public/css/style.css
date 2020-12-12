@@ -1,47 +1,14 @@
-
+*{font-family: 'Roboto', sans-serif;}
 li{
-
     list-style: none;
- 
-
 }
 
-.png{
+.ext{
     margin-left: 20px;
 	list-style: none;
-	list-style-image: url("/assets/png.png");
 
 }
-.exe{
-    margin-left: 20px;
-	list-style: none;
-	list-style-image: url("/assets/exe.png");
 
-}
-.zip{
-
-    content: "";
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    background-image: url("/assets/folder.png");
-    background-size: 15px;
-    background-position: bottom;
-    background-repeat: no-repeat;
-
-}
-.DeleteFolder{
-    height: 5px;
-    width: 5px;
-    display: inline;
-}
-.jar{
-    
-    margin-left: 20px;
-	list-style: none;
-    list-style-image: url("/assets/jar.png"); 
-    
-}
 *, ::after, ::before {
     box-sizing: content-box;
 }
@@ -55,6 +22,28 @@ a.folder:before{
     background-size: 20px;
     background-position: bottom;
     background-repeat: no-repeat;
+}
+.btn-Main-Link{
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: pink;
+    font-weight: bold;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.btn-link {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: #007bff;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
 }
 ol{
     margin-block-start: 0em;

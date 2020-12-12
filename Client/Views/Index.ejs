@@ -1,76 +1,134 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <%- include('partials/head'); -%>
 </head>
+
 <body>
-<header>
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-text">
-          SakuraX Cloud 
-        </span>
-      </nav>
-</header>
-    <div class="row p-3" >
-        <div class="col-sm-3 mb-3" >
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <span class="navbar-text">
+                SakuraX Cloud
+            </span>
+        </nav>
+    </header>
+    <div class="row p-3 mr-0">
+        <div class="col-sm-3 mb-3">
             <div class="card">
                 <div class="card-body">
                     <div class="tree">
                         <ul class="mb-0 pl-0">
-                            <li class="folder"><a class="folder" href="#"> /</a>
-                        <% Tree.forEach(function(tree) { %>
+                            <li class="folder">
+                                <% var Id = 0 ;
+                                var PointerActualPath = ActualPath ;
+                                %>
+                                <% Tree.forEach(function(tree) { %>
                                 <ul class="li-ul-tree">
                                     <% if(tree.type == "file"){%>
-                                     <% switch(tree.name.substr(-3)) {
-                                         case 'png' : %>  
-                                        <li class="file png"> <%= tree.name %> </li>
-                                        <%break;
-                                        case 'jar' : %>
-                                        <li class="file jar"> <%= tree.name %></li>
-                                        <%break;
-                                        case 'exe' : %>
-                                        <li class="file exe"> <%= tree.name %></li>
-                                        <%break;;%>
-                                  <%}}else{%>
-                                    <li class="folder"> <a class="folder" href="#"> <%= tree.name %> </a> <button type="button" class="close DeleteFolder" aria-hidden="<%= tree.path %>">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button></li>
-                                <%}%>
+                                    <% var ext = tree.name.substr(-3);%>
+                                    <% switch(ext) {
+                                         case ext: %>
+                                    <li class="file ext" style="list-style-image: url('/assets/<%= ext %>.png');">
+                                        <form action="/DeleteFolder" method="POST"><input type="hidden" name="path"
+                                                value="<%=tree.path%>"><button type="submit" class="close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button></form> <%= tree.name %>
+                                    </li>
+                                    <%break;
+                                        default : %>
+                                    <li class="file">
+                                        <form action="/DeleteFolder" method="POST"><input type="hidden" name="path"
+                                                value="<%=tree.path%>"><button type="submit" class="close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button></form> <%= tree.name %>
+                                    </li>
+                                    <%break;;%>
+                                    <%}}else{
+                                    var ActualPath = [JSON.stringify(tree.path)];
+                                    tree.forEach((treeChildren) => {
+                                    %>
+                                    <li class="folder">
+                                        <div>
+                                        <form action="/DeleteFolder" method="POST">
+                                            <input type="hidden" name="path"
+                                            value="<%=tree.path%>">
+                                            <button type="submit" class="close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </form>
+                                        <form action="/ChangeRoute" method="POST"><a class="folder"> </a><input type="hidden" name="path" value="<%=tree.path%>"><button type="submit" class="btn-link"> <%=tree.name%></button></form>
+                                        </div>
+                                    </li>
+                                    <%})%>
+                                    <%}%>
                                 </ul>
-                        <%})%>
+                                <%})%>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-7 p-0"> 
+        <div class="col-sm-7 p-0">
             <div class="row">
                 <div class="col">
                     <div class="card">
                         <div class="card-body" style="padding: 5px;">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb" style="margin-bottom:0rem">
-                                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                  <li class="breadcrumb-item"><a href="#">Library</a></li>
-                                  <li class="breadcrumb-item active" aria-current="page">Data</li> 
+                                    <form action="/ChangeRoute" method="POST"><input type="hidden" name="path" value="<%=RootPath%>"><button type="submit" class="btn-Main-Link"> SakuraXCloud</button></form>
+                                    <% var aux = PointerActualPath.split('/') ;%>
+                                    <% if(PointerActualPath != "/"){%> <li class="breadcrumb-item"></li><%}%>
+                                    <% console.log(PointerActualPath);
+                                    if(aux[1] == "Prueba"){ aux.splice(0,1);}
+                                    for(var i = 1 ;  i < aux.length ; i++){ %>
+                                    <li class="breadcrumb-item"><a href="#"><%= aux[i] %></a></li>
+                                    <%}%>
                                 </ol>
                               </nav>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row mt-4 ">
+            <div class="row my-4 ">
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            
+                           <ul class="mb-0 pl-0">
+                            <form>
+                                <li class="list-group-item list-group-item-primary"><input type="checkbox"> blabla 
+                                    <button type="submit" class="close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </li>
+                                <li class="list-group-item list-group-item-primary"><input type="checkbox"> blabla 
+                                    <button type="submit" class="close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </li>
+                                <li class="list-group-item list-group-item-primary"><input type="checkbox"> blabla 
+                                    <button type="submit" class="close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </li>
+                                <li class="list-group-item list-group-item-primary"><input type="checkbox"> blabla 
+                                    <button type="submit" class="close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </li>
+                                <li class="list-group-item list-group-item-primary"><input type="checkbox"> blabla 
+                                    <button type="submit" class="close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </li>
+                            </form>
+                           </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    --
         <div class="col-sm">
             <form ref="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
                 <input type="file" name="file"/>
@@ -83,9 +141,7 @@
                 <input type="text" name="NewFolderName" placeholder="Ingrese un nombre a la carpeta."/>
             </form>
         </div>
-    -->
     </div>
-
 </body>
 <script src="/scripts/DeleteFolder.js"></script>
 </html>
